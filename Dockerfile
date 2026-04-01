@@ -19,8 +19,12 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 WORKDIR /app
 
+# Força git a usar HTTPS em vez de SSH (resolve erro 128 no Railway)
+RUN git config --global url."https://".insteadOf git:// && \
+    git config --global url."https://github.com/".insteadOf git@github.com:
+
 COPY package.json ./
-RUN npm install --omit=dev
+RUN npm install
 
 COPY . .
 
