@@ -2,6 +2,7 @@ FROM node:20-slim
 
 # Dependências do Puppeteer/Chromium
 RUN apt-get update && apt-get install -y \
+    git \
     chromium \
     fonts-liberation \
     libnss3 \
